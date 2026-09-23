@@ -15,37 +15,37 @@ export const memories: Memory[] = [
   {
     id: 'memory-01',
     image: '/photos/memory_01.jpg',
-    caption: 'A special memory ❤️',
+    caption: 'Cuties in one pic 🥰',
     location: [-52, 9, 36],
   },
   {
     id: 'memory-02',
     image: '/photos/memory_02.jpg',
-    caption: 'Another beautiful day.',
+    caption: "POV: I'm on a date with you 💕",
     location: [-61, 11, 20],
   },
   {
     id: 'memory-03',
     image: '/photos/memory_03.jpg',
-    caption: 'One of my favorites.',
+    caption: 'One of my faves ❤️',
     location: [-56, 14, 4],
   },
   {
     id: 'memory-04',
     image: '/photos/memory_04.jpg',
-    caption: 'I still think about this one.',
+    caption: 'Monster eating Iceuna 👹🍦',
     location: [-66, 17, -12],
   },
   {
     id: 'memory-05',
     image: '/photos/memory_05.jpg',
-    caption: 'Such a good time.',
+    caption: 'Silly duckies 🐥💛',
     location: [-57, 21, -29],
   },
   {
     id: 'memory-06',
     image: '/photos/memory_06.jpg',
-    caption: 'Here is to many more.',
+    caption: 'Here is to many more!! 🥂✨',
     location: [-46, 24, -43],
   },
 ]
