@@ -20,7 +20,7 @@ Add `?debugWorld=1` to the URL for an on-screen FPS/position/zone overlay.
 
 ## Adding Photos
 
-1. Drop your final images into `public/photos/`, named `memory-01.jpg` through `memory-06.jpg`
+1. Drop your final images into `public/photos/`, named `memory_01.jpg` through `memory_06.jpg`
    (jpg/png/webp all work — just update the extension in the next step if needed).
 2. Edit `src/data/memories.ts` to update each entry's `image` path and `caption`.
 

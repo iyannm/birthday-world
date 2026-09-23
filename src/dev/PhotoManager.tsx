@@ -9,8 +9,8 @@ Photos uploaded here are stored only in this browser for testing.
 For the final deployed version:
 
 1. Place your final images inside /public/photos/
-2. Name them memory-01.jpg, memory-02.jpg, etc.
-3. Update captions in src/data/memories.ts
+2. Name them memory_01.jpg, memory_02.jpg, etc.
+3. Update captions and image extensions in src/data/memories.ts if needed
 4. Commit and push.`
 
 interface SlotProps {

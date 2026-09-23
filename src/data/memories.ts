@@ -5,6 +5,8 @@ export interface Memory {
   location: [number, number, number]
 }
 
+const photosBase = `${import.meta.env.BASE_URL}photos/`
+
 /**
  * Data-driven memory stations along the Memory Trail.
  * Swap `image` paths for real photos in /public/photos and this list
@@ -14,37 +16,37 @@ export interface Memory {
 export const memories: Memory[] = [
   {
     id: 'memory-01',
-    image: '/photos/memory_01.jpg',
+    image: `${photosBase}memory_01.jpg`,
     caption: 'Cuties in one pic 🥰',
     location: [-52, 9, 36],
   },
   {
     id: 'memory-02',
-    image: '/photos/memory_02.jpg',
+    image: `${photosBase}memory_02.jpg`,
     caption: "POV: I'm on a date with you 💕",
     location: [-61, 11, 20],
   },
   {
     id: 'memory-03',
-    image: '/photos/memory_03.jpg',
+    image: `${photosBase}memory_03.jpg`,
     caption: 'One of my faves ❤️',
     location: [-56, 14, 4],
   },
   {
     id: 'memory-04',
-    image: '/photos/memory_04.jpg',
+    image: `${photosBase}memory_04.jpg`,
     caption: 'Monster eating Iceuna 👹🍦',
     location: [-66, 17, -12],
   },
   {
     id: 'memory-05',
-    image: '/photos/memory_05.jpg',
+    image: `${photosBase}memory_05.jpg`,
     caption: 'Silly duckies 🐥💛',
     location: [-57, 21, -29],
   },
   {
     id: 'memory-06',
-    image: '/photos/memory_06.jpg',
+    image: `${photosBase}memory_06.jpg`,
     caption: 'Here is to many more!! 🥂✨',
     location: [-46, 24, -43],
   },
