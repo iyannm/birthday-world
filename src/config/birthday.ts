@@ -17,17 +17,17 @@ export const birthdayConfig = {
   wishThankYou: 'Your wish is floating up into the sky ✨',
 
   letterTitle: 'Happy Birthday! ❤️',
-  letter: `Happy Birthday! ❤️
+  letter: `Happy Birthday my love love! 🎂❤️
 
-I wanted to make something a little different for you this year.
+I hope you enjoy your day and the happy on Happy Birthday is more happier than that happy. I do not know what I just said because I'm happy we get to celebrate your birthday together again. 🥳
 
-So instead of just giving you a message, I made you a little world to explore.
+Welcome to the 20s gang hahahahahahahah! 🎉😂 You know naman that your baby love you so so much and that I'm always here for you. ❤️ Bastat you need me for something I'm here always. 🤍
 
-Every part of it was made to celebrate you, the memories we've made, and all the memories still waiting for us.
+Galingan mo sa pagaaral and work stuff, I know you've been stressed recently pero laban lang. Always pray and pagbutihin tupad. 🙏✨
 
-I hope this year brings you more happiness, more adventures, and more reasons to smile.
+P.S. Congratulations on the exam offerrrrr! 🎓🎉 Soafer galing my love love! 🥰
 
-Happy Birthday. ❤️`,
+Happy Birthday againnn!!! 🎂🎈❤️`,
 
   finaleTitle: 'Happy Birthday ❤️',
   finalMessage: "Here's to another beautiful year.",
