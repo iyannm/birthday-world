@@ -5,6 +5,7 @@ import { World } from './world/World'
 import { Player } from './Player'
 import { CameraRig } from './Camera'
 import { FinaleFireworks } from './FinaleFireworks'
+import { FinaleSky } from './FinaleSky'
 import { DebugStats } from './DebugStats'
 import { useJoystick } from '../hooks/useJoystick'
 import { useKeyboard } from '../hooks/useKeyboard'
@@ -59,6 +60,7 @@ export function BirthdayWorld() {
         <World />
         <Player joystick={joystick.vector} keyboard={keyboard} playerRef={playerRef} paused={paused} />
         <CameraRig playerRef={playerRef} />
+        <FinaleSky />
         <FinaleFireworks />
         {debug && <DebugStats playerRef={playerRef} domRef={debugDomRef} />}
       </Canvas>

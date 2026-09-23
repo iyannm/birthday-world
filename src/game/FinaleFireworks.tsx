@@ -21,7 +21,7 @@ interface Particle {
 }
 
 function randomBurstOrigin() {
-  return new THREE.Vector3((Math.random() - 0.5) * 50 - 35, 30 + Math.random() * 14, (Math.random() - 0.5) * 50 - 90)
+  return new THREE.Vector3((Math.random() - 0.5) * 36 - 60, 45 + Math.random() * 8, (Math.random() - 0.5) * 32 - 145)
 }
 
 function respawn(i: number, positions: Float32Array, particles: Particle[], origin: THREE.Vector3) {
@@ -100,7 +100,7 @@ export function FinaleFireworks() {
         <bufferAttribute attach="attributes-position" args={[positions, 3]} />
         <bufferAttribute attach="attributes-color" args={[colors, 3]} />
       </bufferGeometry>
-      <pointsMaterial size={0.9} vertexColors transparent opacity={0.95} sizeAttenuation depthWrite={false} />
+      <pointsMaterial size={0.75} vertexColors transparent opacity={0.95} sizeAttenuation depthWrite={false} />
     </points>
   )
 }

@@ -26,11 +26,11 @@ export function CameraRig({ playerRef }: CameraRigProps) {
     const t = 1 - Math.pow(0.0001, delta)
 
     if (finaleActive) {
-      const desired = new THREE.Vector3(player.position.x + 4, player.position.y + 9, player.position.z + 9)
+      const desired = new THREE.Vector3(player.position.x + 4, player.position.y + 7, player.position.z + 18)
       currentPos.current.lerp(desired, t * 0.6)
       camera.position.copy(currentPos.current)
       lookTarget.current.lerp(
-        new THREE.Vector3(player.position.x - 25, player.position.y + 6, player.position.z - 60),
+        new THREE.Vector3(player.position.x - 25, player.position.y + 11, player.position.z - 60),
         t * 0.4,
       )
       camera.lookAt(lookTarget.current)
