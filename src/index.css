@@ -17,7 +17,12 @@
   --safe-left: env(safe-area-inset-left, 0px);
   --safe-right: env(safe-area-inset-right, 0px);
 
-  font-family: 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif;
+  font-family:
+    'Segoe UI',
+    system-ui,
+    -apple-system,
+    Roboto,
+    sans-serif;
   color-scheme: light;
 }
 
@@ -611,4 +616,341 @@ button {
 .dev-photo-remove {
   background: rgba(139, 96, 72, 0.1);
   color: var(--ink);
+}
+
+/* Paper, brass and botanical details shared by the invitation, HUD and keepsakes. */
+:root {
+  --ink: #423f36;
+  --muted-ink: #797567;
+}
+button {
+  color: inherit;
+}
+button:focus-visible {
+  outline: 3px solid var(--dark-green);
+  outline-offset: 4px;
+}
+button:disabled {
+  cursor: default;
+}
+.intro-screen {
+  background:
+    radial-gradient(ellipse at 12% 10%, #e4e7ce 0, transparent 50%),
+    radial-gradient(ellipse at 94% 90%, #efd3d7 0, transparent 50%), #fff4e5;
+}
+.intro-card {
+  position: relative;
+  width: 100%;
+  max-width: 430px;
+  padding: 36px 30px;
+  gap: 22px;
+  border: 1px solid #bcb39766;
+  border-radius: 160px 160px 14px 14px;
+  background: #fff9ed99;
+  box-shadow: 0 18px 70px #65543a0a;
+}
+.eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  color: var(--dark-green);
+  font-weight: 650;
+  margin-top: 16px;
+}
+.invitation-seal {
+  color: #ad667c;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+}
+.invitation-seal span {
+  font-family: Georgia, serif;
+  font-size: 13px;
+  font-style: italic;
+  color: var(--muted-ink);
+}
+.intro-title {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-weight: 400;
+  font-size: clamp(30px, 7vw, 42px);
+  line-height: 1.12;
+  letter-spacing: -0.04em;
+}
+.intro-description {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--muted-ink);
+}
+.intro-button {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  background: var(--dark-green);
+  color: #fff8ed;
+  border: 1px solid #fff3;
+  border-radius: 10px;
+  padding: 15px 32px;
+  font-size: 14px;
+  box-shadow:
+    0 6px 0 #3c5944,
+    0 12px 20px #52765d20;
+}
+.intro-footnote {
+  font-size: 10px;
+  letter-spacing: 0.035em;
+  color: var(--muted-ink);
+  margin-top: 3px;
+}
+.hud-top {
+  gap: 8px;
+}
+.hud-title,
+.memories-count,
+.hud-icon-btn {
+  background: #fff7eae8;
+  border: 1px solid #fff9ef;
+  box-shadow:
+    0 3px 0 #74634516,
+    0 6px 20px #423f3610;
+  min-height: 44px;
+}
+.hud-title {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  border-radius: 12px;
+  font-family: Georgia, serif;
+  font-weight: 400;
+  font-size: 17px;
+  white-space: nowrap;
+}
+.hud-title svg {
+  color: #af7181;
+}
+.hud-top-right {
+  gap: 7px;
+}
+.memories-count {
+  cursor: pointer;
+  border-radius: 12px;
+  gap: 9px;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+.memories-count svg {
+  color: var(--dark-green);
+}
+.count-divider {
+  color: #9a907f;
+}
+.hud-icon-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  color: var(--dark-green);
+}
+.trail-hint {
+  position: absolute;
+  top: calc(72px + var(--safe-top));
+  left: calc(20px + var(--safe-left));
+  color: #384831;
+  font-size: 11px;
+  letter-spacing: 0.02em;
+  background: #fff4e0bc;
+  border-radius: 6px;
+  padding: 6px 9px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.hint-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #ac8150;
+}
+.joystick-base {
+  background: #fff8e550;
+  border: 1px solid #fff4dbbc;
+  box-shadow:
+    inset 0 0 0 9px #fff6e21c,
+    0 8px 30px #3e4c2920;
+}
+.joystick-nub {
+  background: radial-gradient(circle at 35% 25%, #fff5df, #ddcba5);
+  border: 1px solid #fff4db;
+  box-shadow:
+    0 4px 0 #8e7f5a44,
+    0 6px 14px #524b3625;
+  width: 46px;
+  height: 46px;
+}
+.heart-button {
+  border: 1px solid #fff3df;
+  background: #fff6e7e6;
+  color: #a06e79;
+  box-shadow:
+    0 4px 0 #80644333,
+    0 7px 20px #4c443321;
+}
+.heart-button:disabled {
+  opacity: 0.75;
+}
+.heart-button.active {
+  background: #b16e83;
+  color: #fff5e3;
+  animation: heartbeat 2.2s ease-in-out infinite;
+}
+.interact-zone {
+  gap: 9px;
+}
+.control-caption {
+  color: #fff8ed;
+  font-size: 10px;
+  letter-spacing: 0.09em;
+  text-shadow: 0 1px 4px #3b472d;
+}
+.interact-hint {
+  background: #fff6e9;
+  border: 1px solid #fffdf4;
+  border-radius: 10px;
+  font-size: 12px;
+  max-width: min(250px, 65vw);
+  white-space: normal;
+  text-align: center;
+}
+.modal-overlay {
+  background: #34453677;
+  backdrop-filter: blur(7px);
+}
+.modal-card {
+  background: linear-gradient(140deg, #fff9ed, #fff0dc);
+  border: 1px solid #fffdf4;
+  border-radius: 18px;
+  padding: 58px 26px 28px;
+  box-shadow: 0 24px 80px #26392d44;
+}
+.modal-close {
+  top: 10px;
+  right: 10px;
+  width: 40px;
+  height: 40px;
+  background: #e5ddcb80;
+  border: 1px solid #cec4af50;
+}
+.wish-title,
+.letter-title {
+  font-family: Georgia, serif;
+  font-weight: 400;
+  font-size: 27px;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+}
+.wish-input {
+  border: 1px solid #cfc6af;
+  background: #fffcf5;
+  font-size: 16px;
+  border-radius: 10px;
+  line-height: 1.6;
+  min-height: 120px;
+}
+.wish-submit {
+  background: var(--dark-green);
+  color: #fff8ed;
+  border-radius: 10px;
+  padding: 15px;
+}
+.memory-photo,
+.memory-photo-placeholder {
+  border: 8px solid #fffdf6;
+  border-bottom-width: 28px;
+  border-radius: 3px;
+  box-shadow: 0 4px 12px #6b573322;
+}
+.memory-caption {
+  font-family: Georgia, serif;
+  font-size: 19px;
+  line-height: 1.6;
+}
+.letter-body {
+  font-size: 15px;
+  line-height: 1.85;
+}
+.memories-panel-item {
+  border: 1px dashed #afbaa4;
+  background: #e4e8d580;
+}
+.memories-panel-item.opened {
+  background: #ecd1d1;
+  color: #925d70;
+  border: 1px solid #fff8ea;
+}
+.debug-overlay {
+  top: 110px;
+  z-index: 60;
+  white-space: pre-line;
+  max-width: calc(100vw - 32px);
+  font-size: 10px;
+}
+@media (max-width: 480px) {
+  .hud-top {
+    left: calc(12px + var(--safe-left));
+    right: calc(12px + var(--safe-right));
+  }
+  .hud-title {
+    padding: 8px 10px;
+    gap: 6px;
+    font-size: 15px;
+  }
+  .memories-count {
+    padding: 8px 10px;
+    gap: 7px;
+  }
+  .memories-label,
+  .desktop-hint {
+    display: none;
+  }
+  .trail-hint {
+    left: calc(14px + var(--safe-left));
+    font-size: 10px;
+  }
+  .intro-card {
+    padding: 28px 23px;
+    gap: 18px;
+  }
+  .joystick-zone {
+    width: 104px;
+    height: 104px;
+  }
+  .heart-button {
+    width: 66px;
+    height: 66px;
+  }
+}
+@media (max-height: 600px) {
+  .intro-card {
+    max-width: 520px;
+    border-radius: 18px;
+    padding: 16px 24px;
+    gap: 10px;
+  }
+  .invitation-seal {
+    display: none;
+  }
+  .eyebrow {
+    margin: 0;
+  }
+  .intro-title {
+    font-size: 30px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
 }

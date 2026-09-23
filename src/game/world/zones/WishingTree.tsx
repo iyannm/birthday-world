@@ -1,3 +1,4 @@
+import { Clearing } from '../props/Clearing'
 import { FloatingParticles } from '../props/FloatingParticles'
 import { Tree } from '../props/Tree'
 import { WorldSign } from '../props/WorldSign'
@@ -18,16 +19,22 @@ export function WishingTree() {
 
   return (
     <group position={[x, y, z]}>
-      <WorldSign position={[0, 0, 4.2]} title={birthdayConfig.wishingTreeLabel} subtitle={birthdayConfig.wishPromptTitle} />
+      <WorldSign
+        position={[0, 0, 4.2]}
+        title={birthdayConfig.wishingTreeLabel}
+        subtitle={birthdayConfig.wishPromptTitle}
+      />
 
       {/* circular platform */}
-      <mesh position={[0, 0.03, 0]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
-        <circleGeometry args={[5.2, 20]} />
-        <meshStandardMaterial color={palette.pathStone} flatShading />
-      </mesh>
+      <Clearing origin={[x, z]} radius={6.2} />
 
-      <Tree position={[0, 0, 0]} scale={1.6} foliageColor={palette.lightPink} trunkColor={palette.wood} seed={7} />
-      <pointLight position={[0, 4, 0]} color={palette.lavender} intensity={1.6} distance={10} decay={2} />
+      <Tree
+        position={[0, 0, 0]}
+        scale={2.2}
+        foliageColor={palette.lightPink}
+        trunkColor={palette.wood}
+        seed={7}
+      />
 
       {CARD_POSITIONS.map((p, i) => (
         <group key={i} position={p} rotation={[0, i * 0.9, 0]}>
@@ -46,7 +53,15 @@ export function WishingTree() {
         </group>
       ))}
 
-      <FloatingParticles center={[0, 0]} count={14} radius={4.5} baseY={2} height={3} color={palette.gold} size={0.08} />
+      <FloatingParticles
+        center={[0, 0]}
+        count={14}
+        radius={4.5}
+        baseY={2}
+        height={3}
+        color={palette.gold}
+        size={0.08}
+      />
     </group>
   )
 }

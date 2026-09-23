@@ -31,6 +31,7 @@ export function DebugStats({ playerRef, domRef }: DebugStatsProps) {
         .join('\n')
       domRef.current.textContent =
         `FPS: ${fps.current}\n` +
+        `Draws: ${state.gl.info.render.calls} | Triangles: ${state.gl.info.render.triangles.toLocaleString()}\n` +
         `pos: (${p.x.toFixed(1)}, ${p.y.toFixed(1)}, ${p.z.toFixed(1)})\n\n` +
         `zones:\n${zoneLines}`
     }

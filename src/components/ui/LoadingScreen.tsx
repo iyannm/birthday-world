@@ -31,7 +31,7 @@ export function LoadingScreen() {
   if (phase !== 'loading' && !fading) return null
 
   return (
-    <div className={`loading-screen ${fading ? 'fading' : ''}`}>
+    <div className={`loading-screen ${fading ? 'fading' : ''}`} aria-hidden={fading}>
       <div className="loading-heart">❤️</div>
       <div className="loading-text">Preparing your little world...</div>
       <div className="loading-bar-track">

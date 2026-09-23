@@ -1,88 +1,75 @@
+import { useMemo } from 'react'
+import { ConeGeometry } from 'three'
 import { Bench } from '../props/Bench'
 import { FlowerPatch } from '../props/FlowerPatch'
 import { Lamp } from '../props/Lamp'
 import { WorldSign } from '../props/WorldSign'
+import { CraftedMesh } from '../props/CraftedMesh'
+import { box, branch, combine, pigment, place } from '../props/craftGeometry'
 import { birthdayConfig } from '../../../config/birthday'
 import { heightAt, palette, zonePositions } from '../worldConfig'
 
-function Telescope() {
-  return (
-    <group position={[2.6, 0, -1.5]} rotation={[0, -0.6, 0]}>
-      {[-0.3, 0.3].map((x) =>
-        [-0.3, 0.3].map((zOff) => (
-          <mesh key={`${x}-${zOff}`} position={[x, 0.5, zOff]} rotation={[0.15 * Math.sign(zOff || 1), 0, 0.15 * Math.sign(x || 1)]}>
-            <cylinderGeometry args={[0.03, 0.03, 1, 5]} />
-            <meshStandardMaterial color={palette.wood} flatShading />
-          </mesh>
-        )),
-      )}
-      <mesh position={[0, 1.05, 0]} rotation={[0, 0, -0.5]} castShadow>
-        <cylinderGeometry args={[0.09, 0.13, 1.1, 8]} />
-        <meshStandardMaterial color={palette.rock} flatShading />
-      </mesh>
-    </group>
-  )
-}
-
-function Pavilion() {
-  const posts: [number, number][] = [
-    [-2.4, -2.4],
-    [2.4, -2.4],
-    [-2.4, 2.4],
-    [2.4, 2.4],
-  ]
-  return (
-    <group position={[-3, 0, 1]}>
-      {posts.map((p, i) => (
-        <mesh key={i} position={[p[0], 1.3, p[1]]} castShadow>
-          <cylinderGeometry args={[0.09, 0.1, 2.6, 6]} />
-          <meshStandardMaterial color={palette.wood} flatShading />
-        </mesh>
-      ))}
-      <mesh position={[0, 2.7, 0]} castShadow>
-        <coneGeometry args={[3.6, 1.3, 4]} />
-        <meshStandardMaterial color={palette.pink} flatShading />
-      </mesh>
-    </group>
-  )
-}
-
 export function FinaleLookout() {
-  const [x, , z] = zonePositions.finaleLookout
-  const y = heightAt(x, z)
-
+  const [x, , z] = zonePositions.finaleLookout,
+    y = heightAt(x, z)
+  const geometry = useMemo(() => {
+    const parts = []
+    for (let i = 0; i < 22; i++)
+      parts.push(box([10, 0.22, 0.39], [0, 0.1, -4.3 + i * 0.41], i % 3 ? '#AD8165' : '#9D7158'))
+    for (const side of [-1, 1]) {
+      for (let i = 0; i < 6; i++)
+        parts.push(box([0.12, 1, 0.12], [side * 4.8, 0.7, -4.2 + i * 1.68], palette.cream))
+      parts.push(box([0.14, 0.12, 8.5], [side * 4.8, 1.16, 0], palette.wood))
+    }
+    for (let i = 0; i < 7; i++) parts.push(box([0.12, 1, 0.12], [-4.8 + i * 1.6, 0.7, -4.2], palette.cream))
+    parts.push(box([9.8, 0.12, 0.14], [0, 1.16, -4.2], palette.wood))
+    for (const px of [-4.6, -0.2])
+      for (const pz of [-1.5, 2.9]) parts.push(branch([px, 0.2, pz], [px, 3.5, pz], 0.1, palette.cream))
+    parts.push(
+      place(
+        pigment(new ConeGeometry(3.6, 1.2, 4), palette.pink),
+        [-2.4, 4.05, 0.7],
+        [1, 1, 1],
+        [0, Math.PI / 4, 0],
+      ),
+    )
+    parts.push(
+      place(
+        pigment(new ConeGeometry(3.7, 0.14, 4), palette.cream),
+        [-2.4, 3.48, 0.7],
+        [1, 1, 1],
+        [0, Math.PI / 4, 0],
+      ),
+    )
+    parts.push(branch([-2.4, 4.5, 0.7], [-2.4, 5, 0.7], 0.055, palette.gold))
+    for (let i = 0; i < 3; i++) {
+      const a = (i / 3) * Math.PI * 2
+      parts.push(
+        branch(
+          [2.6 + Math.cos(a) * 0.5, 0.2, -1.5 + Math.sin(a) * 0.5],
+          [2.6, 1.25, -1.5],
+          0.035,
+          palette.wood,
+        ),
+      )
+    }
+    parts.push(branch([2.35, 1.25, -1.1], [2.9, 1.65, -2], 0.14, palette.rock))
+    parts.push(branch([2.86, 1.62, -1.92], [2.94, 1.68, -2.06], 0.17, palette.gold))
+    return combine(parts)
+  }, [])
   return (
     <group position={[x, y, z]}>
-      <WorldSign position={[0, 0.4, 5.5]} title={birthdayConfig.finaleLookoutLabel} subtitle="Watch the Sky" />
-
-      {/* lookout deck */}
-      <mesh position={[0, 0.1, 0]} receiveShadow castShadow>
-        <boxGeometry args={[10, 0.3, 9]} />
-        <meshStandardMaterial color={palette.wood} flatShading />
-      </mesh>
-
-      {/* railings */}
-      {[-4.9, 4.9].map((rx) => (
-        <mesh key={rx} position={[rx, 0.8, 0]} castShadow>
-          <boxGeometry args={[0.12, 0.9, 9]} />
-          <meshStandardMaterial color={palette.cream} flatShading />
-        </mesh>
-      ))}
-      <mesh position={[0, 0.8, -4.4]} castShadow>
-        <boxGeometry args={[10, 0.9, 0.12]} />
-        <meshStandardMaterial color={palette.cream} flatShading />
-      </mesh>
-
-      <Pavilion />
-      <Telescope />
-
-      <Bench position={[0, 0.25, 3.2]} rotation={0} />
+      <WorldSign
+        position={[0, 0.4, 5.5]}
+        title={birthdayConfig.finaleLookoutLabel}
+        subtitle="Watch the Sky"
+      />
+      <CraftedMesh geometry={geometry} />
+      <Bench position={[0, 0.25, 3.2]} />
       <Bench position={[-3.5, 0.25, 3.4]} rotation={0.3} />
-
-      <FlowerPatch center={[x + 4, z + 3.5]} y={y + 0.25} count={16} radius={2} />
-
-      <Lamp position={[-4.6, 0.25, -3.8]} withLight />
-      <Lamp position={[4.6, 0.25, -3.8]} withLight />
+      <FlowerPatch center={[4, 3.5]} y={0.25} count={16} radius={2} />
+      <Lamp position={[-4.6, 0.25, -3.8]} />
+      <Lamp position={[4.6, 0.25, -3.8]} />
     </group>
   )
 }

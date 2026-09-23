@@ -1,4 +1,5 @@
 import { Balloon } from '../props/Balloon'
+import { Clearing } from '../props/Clearing'
 import { Bench } from '../props/Bench'
 import { FlowerArch } from '../props/FlowerArch'
 import { FlowerPatch } from '../props/FlowerPatch'
@@ -15,6 +16,9 @@ export function WelcomeGarden() {
 
   return (
     <group position={[x, 0, z]}>
+      <group position={[0, y, 0]}>
+        <Clearing origin={[x, z]} radius={6.8} />
+      </group>
       <WorldSign position={[0, y, 6]} title="Welcome Garden" subtitle={birthdayConfig.welcomeSignSubtitle} />
       <FlowerArch position={[0, y, 3.5]} />
 
@@ -26,9 +30,9 @@ export function WelcomeGarden() {
         </mesh>
       ))}
 
-      <FlowerPatch center={[x - 5, z - 2]} y={heightAt(x - 5, z - 2)} count={22} radius={3} />
-      <FlowerPatch center={[x + 5, z + 1]} y={heightAt(x + 5, z + 1)} count={22} radius={3} />
-      <FlowerPatch center={[x, z - 6]} y={heightAt(x, z - 6)} count={16} radius={2.6} />
+      <FlowerPatch center={[-5, -2]} y={heightAt(x - 5, z - 2)} count={22} radius={3} />
+      <FlowerPatch center={[5, 1]} y={heightAt(x + 5, z + 1)} count={22} radius={3} />
+      <FlowerPatch center={[0, -6]} y={heightAt(x, z - 6)} count={16} radius={2.6} />
 
       <Tree position={[-7, y, -5]} scale={1.1} seed={1} />
       <Tree position={[7, y, -6]} scale={1} seed={2} />
@@ -43,7 +47,15 @@ export function WelcomeGarden() {
       <Lamp position={[-6, y, -1]} />
       <Lamp position={[6, y, -1]} />
 
-      <FloatingParticles center={[0, -2]} count={8} radius={5} baseY={y + 1.2} height={1.6} color={palette.lightPink} size={0.1} />
+      <FloatingParticles
+        center={[0, -2]}
+        count={8}
+        radius={5}
+        baseY={y + 1.2}
+        height={1.6}
+        color={palette.lightPink}
+        size={0.1}
+      />
     </group>
   )
 }

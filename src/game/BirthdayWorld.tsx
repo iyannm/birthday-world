@@ -49,13 +49,13 @@ export function BirthdayWorld() {
   return (
     <div style={{ position: 'fixed', inset: 0 }}>
       <Canvas
-        shadows="basic"
+        shadows
         dpr={[1, 1.5]}
         camera={{ fov: 50, near: 0.1, far: 400, position: [0, 11, 220] }}
         gl={{ antialias: true, powerPreference: 'high-performance' }}
       >
-        <color attach="background" args={['#D9ECF1']} />
-        <fog attach="fog" args={['#D9ECF1', 70, 200]} />
+        <color attach="background" args={['#F1E8DB']} />
+        <fog attach="fog" args={['#F1E8DB', 48, 165]} />
         <World />
         <Player joystick={joystick.vector} keyboard={keyboard} playerRef={playerRef} paused={paused} />
         <CameraRig playerRef={playerRef} />

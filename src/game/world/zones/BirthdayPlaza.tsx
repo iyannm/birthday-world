@@ -1,3 +1,4 @@
+import { Clearing } from '../props/Clearing'
 import { useMemo } from 'react'
 import { Balloon } from '../props/Balloon'
 import { Bench } from '../props/Bench'
@@ -36,18 +37,29 @@ export function BirthdayPlaza() {
       <WorldSign position={[-5.5, y, 5.5]} title="Birthday Plaza" subtitle={birthdayConfig.cakeWishPrompt} />
 
       {/* circular plaza platform */}
-      <mesh position={[0, y + 0.02, 0]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
-        <circleGeometry args={[6.4, 24]} />
-        <meshStandardMaterial color={palette.pathStone} flatShading />
-      </mesh>
+      <group position={[0, y, 0]}>
+        <Clearing origin={[x, z]} radius={7.2} />
+      </group>
 
       <group position={[0, y + 0.05, 0]}>
         <Cake position={[0, 0, 0]} sparkle={sparkle} />
       </group>
 
       <Present position={[-2.2, y + 0.4, 1.6]} color={palette.lavender} rotationY={0.3} />
-      <Present position={[2.4, y + 0.35, 1.2]} color={palette.sage} ribbonColor={palette.pink} scale={0.85} rotationY={-0.4} />
-      <Present position={[-1.6, y + 0.4, -2.2]} color={palette.pink} ribbonColor={palette.cream} scale={0.95} rotationY={0.9} />
+      <Present
+        position={[2.4, y + 0.35, 1.2]}
+        color={palette.sage}
+        ribbonColor={palette.pink}
+        scale={0.85}
+        rotationY={-0.4}
+      />
+      <Present
+        position={[-1.6, y + 0.4, -2.2]}
+        color={palette.pink}
+        ribbonColor={palette.cream}
+        scale={0.95}
+        rotationY={0.9}
+      />
 
       <Balloon position={[-3.5, y + 2.6, -3]} color={palette.pink} seed={4} />
       <Balloon position={[3.6, y + 2.8, -3.2]} color={palette.lavender} seed={5} />

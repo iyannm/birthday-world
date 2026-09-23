@@ -81,10 +81,41 @@ export interface PathSegment {
 
 /** Organic curved path network connecting every zone (rendered as ribbon strips). */
 export const pathSegments: PathSegment[] = [
-  { points: [[0, 103], [-15, 88], [-30, 78], [-38, 68]] },
-  { points: [[0, 103], [15, 90], [26, 72], [34, 58]] },
-  { points: [[-38, 68], [-25, 45], [-10, 20], [0, 0]] },
-  { points: [[34, 58], [25, 35], [10, 15], [0, 0]] },
+  {
+    points: [
+      [0, 103],
+      [0, 94],
+      [-12, 88],
+      [-27, 80],
+      [-38, 68],
+    ],
+    width: 3.8,
+  },
+  {
+    points: [
+      [0, 94],
+      [12, 88],
+      [24, 75],
+      [34, 58],
+    ],
+    width: 3.8,
+  },
+  {
+    points: [
+      [-38, 68],
+      [-25, 45],
+      [-10, 20],
+      [0, 0],
+    ],
+  },
+  {
+    points: [
+      [34, 58],
+      [25, 35],
+      [10, 15],
+      [0, 0],
+    ],
+  },
   {
     points: [
       [0, 0],
@@ -99,9 +130,30 @@ export const pathSegments: PathSegment[] = [
       [-35, -88],
     ],
   },
-  { points: [[0, 0], [30, -5], [50, -8], [61, -10]] },
-  { points: [[61, -10], [55, -30], [48, -45], [42, -53]] },
-  { points: [[42, -53], [20, -65], [0, -72], [-35, -88]] },
+  {
+    points: [
+      [0, 0],
+      [30, -5],
+      [50, -8],
+      [61, -10],
+    ],
+  },
+  {
+    points: [
+      [61, -10],
+      [55, -30],
+      [48, -45],
+      [42, -53],
+    ],
+  },
+  {
+    points: [
+      [42, -53],
+      [20, -65],
+      [0, -72],
+      [-35, -88],
+    ],
+  },
 ]
 
 export interface WaterFeature {
@@ -110,27 +162,3 @@ export interface WaterFeature {
   length: number
   rotation: number
 }
-
-export const waterFeatures: WaterFeature[] = [
-  { position: [0, 111], width: 12, length: 9, rotation: 0 },
-  { position: [-20, 50], width: 6, length: 20, rotation: 0.5 },
-  { position: [18, 65], width: 6, length: 16, rotation: -0.4 },
-  { position: [-42, 12], width: 7, length: 22, rotation: 0.3 },
-  { position: [36, -18], width: 6, length: 18, rotation: -0.2 },
-  { position: [-15, -70], width: 8, length: 20, rotation: 0.6 },
-]
-
-export interface BridgeSpec {
-  position: [number, number]
-  rotation: number
-  length?: number
-}
-
-export const bridgePositions: BridgeSpec[] = [
-  { position: [-11, 55], rotation: 0.5 },
-  { position: [10, 60], rotation: -0.45 },
-  { position: [-42, 12], rotation: 1.15 },
-  { position: [35, -6], rotation: -0.2 },
-  { position: [50, -38], rotation: 0.3 },
-  { position: [-13, -69], rotation: 0.7 },
-]

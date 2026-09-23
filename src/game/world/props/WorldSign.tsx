@@ -1,45 +1,52 @@
+import { useMemo } from 'react'
 import { Text } from '@react-three/drei'
 import { palette } from '../worldConfig'
-
-interface WorldSignProps {
-  position: [number, number, number]
+import { box, branch, combine, type Vec3 } from './craftGeometry'
+import { CraftedMesh } from './CraftedMesh'
+export function WorldSign({
+  position,
+  title,
+  subtitle,
+  rotation = 0,
+}: {
+  position: Vec3
   title: string
   subtitle?: string
   rotation?: number
-}
-
-/** Wooden signpost with a title + optional subtitle, used at every zone entrance. */
-export function WorldSign({ position, title, subtitle, rotation = 0 }: WorldSignProps) {
+}) {
+  const geometry = useMemo(
+    () =>
+      combine([
+        branch([0, 0, 0], [0, 2.2, 0], 0.1, palette.wood),
+        box([2.85, 0.98, 0.16], [0, 1.92, 0], palette.wood),
+        box([2.7, 0.82, 0.04], [0, 1.94, 0.1], palette.cream),
+        box([0.09, 0.68, 0.05], [-1.23, 1.94, 0.13], palette.pink),
+      ]),
+    [],
+  )
   return (
     <group position={position} rotation={[0, rotation, 0]}>
-      <mesh position={[0, 0.9, 0]} castShadow>
-        <cylinderGeometry args={[0.06, 0.08, 1.8, 6]} />
-        <meshStandardMaterial color={palette.wood} flatShading />
-      </mesh>
-      <mesh position={[0, 1.75, 0.04]} castShadow>
-        <boxGeometry args={[1.7, 0.55, 0.08]} />
-        <meshStandardMaterial color={palette.cream} flatShading />
-      </mesh>
+      <CraftedMesh geometry={geometry} />
       <Text
-        position={[0, 1.85, 0.09]}
-        fontSize={0.16}
+        position={[0.05, 2.09, 0.14]}
+        fontSize={0.21}
         color={palette.darkGreen}
+        maxWidth={2.25}
+        textAlign="center"
         anchorX="center"
         anchorY="middle"
-        maxWidth={1.5}
-        textAlign="center"
       >
         {title}
       </Text>
       {subtitle && (
         <Text
-          position={[0, 1.65, 0.09]}
-          fontSize={0.11}
-          color={palette.pink}
+          position={[0.05, 1.76, 0.14]}
+          fontSize={0.125}
+          color={palette.wood}
+          maxWidth={2.2}
+          textAlign="center"
           anchorX="center"
           anchorY="middle"
-          maxWidth={1.5}
-          textAlign="center"
         >
           {subtitle}
         </Text>

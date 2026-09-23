@@ -1,6 +1,8 @@
 import { useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
 import { Color, type InstancedMesh, Object3D } from 'three'
+import { Tree } from '../props/Tree'
+import { Clearing } from '../props/Clearing'
 import { FlowerPatch } from '../props/FlowerPatch'
 import { PolaroidFrame } from '../props/PolaroidFrame'
 import { WorldSign } from '../props/WorldSign'
@@ -38,14 +40,6 @@ function StringLights({ radius, centerY }: { radius: number; centerY: number }) 
   )
 }
 
-const CANOPY_BLOBS = [
-  { pos: [0, 24, 0] as const, r: 8 },
-  { pos: [6, 21, 3] as const, r: 5.4 },
-  { pos: [-6.5, 20.5, -2] as const, r: 5.6 },
-  { pos: [2, 19, -6] as const, r: 5 },
-  { pos: [-2.5, 22, 5.5] as const, r: 5.2 },
-]
-
 const HANGING_STARS: [number, number, number][] = [
   [7.5, 18, 4],
   [-8, 17, -3],
@@ -68,21 +62,14 @@ export function MemoryTree() {
 
   return (
     <group position={[x, y, z]}>
-      <WorldSign position={[-10, 0, 5]} title={birthdayConfig.memoryTreeLabel} subtitle="Every memory, one tree" />
+      <Clearing origin={[x, z]} radius={11} />
+      <WorldSign
+        position={[-10, 0, 5]}
+        title={birthdayConfig.memoryTreeLabel}
+        subtitle="Every memory, one tree"
+      />
 
-      {/* trunk */}
-      <mesh position={[0, 6, 0]} castShadow>
-        <cylinderGeometry args={[1.1, 1.6, 12, 8]} />
-        <meshStandardMaterial color={palette.wood} flatShading />
-      </mesh>
-
-      {/* canopy */}
-      {CANOPY_BLOBS.map((b, i) => (
-        <mesh key={i} position={b.pos as unknown as [number, number, number]} castShadow>
-          <icosahedronGeometry args={[b.r, 0]} />
-          <meshStandardMaterial color={i % 2 === 0 ? palette.darkGreen : palette.sage} flatShading />
-        </mesh>
-      ))}
+      <Tree position={[0, 0, 0]} scale={5.3} foliageColor={palette.darkGreen} seed={20} />
 
       <StringLights radius={7} centerY={22} />
 
@@ -94,7 +81,12 @@ export function MemoryTree() {
           </mesh>
           <mesh>
             <octahedronGeometry args={[0.28, 0]} />
-            <meshStandardMaterial color={palette.gold} emissive={palette.gold} emissiveIntensity={1.1} flatShading />
+            <meshStandardMaterial
+              color={palette.gold}
+              emissive={palette.gold}
+              emissiveIntensity={1.1}
+              flatShading
+            />
           </mesh>
         </group>
       ))}
@@ -105,7 +97,12 @@ export function MemoryTree() {
             <cylinderGeometry args={[0.008, 0.008, 1.2, 3]} />
             <meshBasicMaterial color={palette.wood} />
           </mesh>
-          <PolaroidFrame id={`tree-deco-${i}`} position={[0, 0, 0]} rotation={[0, (i - 1.5) * 0.3, 0]} scale={0.75} />
+          <PolaroidFrame
+            id={`tree-deco-${i}`}
+            position={[0, 0, 0]}
+            rotation={[0, (i - 1.5) * 0.3, 0]}
+            scale={0.75}
+          />
         </group>
       ))}
 

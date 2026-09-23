@@ -1,23 +1,20 @@
-import { palette } from '../worldConfig'
-
-interface RockProps {
-  position: [number, number, number]
+import { useMemo } from 'react'
+import { CraftedMesh } from './CraftedMesh'
+import { rockGeometry } from './rockGeometry'
+import type { Vec3 } from './craftGeometry'
+export function Rock({
+  position,
+  scale = 1,
+  rotation = 0,
+}: {
+  position: Vec3
   scale?: number
   rotation?: number
-}
-
-/** Low-poly irregular rock (a squashed, rotated dodecahedron reads as "irregular" for free). */
-export function Rock({ position, scale = 1, rotation = 0 }: RockProps) {
+}) {
+  const geometry = useMemo(() => rockGeometry(rotation), [rotation])
   return (
-    <mesh
-      position={position}
-      rotation={[0.3, rotation, 0.15]}
-      scale={[scale * 1.1, scale * 0.75, scale * 0.9]}
-      castShadow
-      receiveShadow
-    >
-      <dodecahedronGeometry args={[1, 0]} />
-      <meshStandardMaterial color={palette.rock} flatShading />
-    </mesh>
+    <group position={position} scale={scale} rotation={[0, rotation, 0]}>
+      <CraftedMesh geometry={geometry} />
+    </group>
   )
 }

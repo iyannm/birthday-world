@@ -9,8 +9,8 @@ interface CameraRigProps {
   playerRef: React.RefObject<Group | null>
 }
 
-const DISTANCE = 12
-const HEIGHT = 8
+const DISTANCE = 13
+const HEIGHT = 7
 
 /** Third-person camera that follows the player with a smooth damp, orbits with
  * `cameraYaw`, and pans out toward the horizon for the finale moment. */
@@ -48,7 +48,7 @@ export function CameraRig({ playerRef }: CameraRigProps) {
     currentPos.current.lerp(desired, t)
     camera.position.copy(currentPos.current)
 
-    lookTarget.current.lerp(new THREE.Vector3(player.position.x, player.position.y + 1.4, player.position.z), t)
+    lookTarget.current.lerp(new THREE.Vector3(player.position.x, player.position.y + 2, player.position.z), t)
     camera.lookAt(lookTarget.current)
   })
 
